@@ -2,26 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply font-unique bg-white text-black;
+}
+
+.icon__left {
+  @apply p-3 rounded-md cursor-pointer hover__tooltip hover:bg-black/20;
+}
+.icon__right {
+  @apply p-3 rounded-full cursor-pointer hover__tooltip hover:bg-black/20;
+}
+
+.icon {
+  @apply text-xl;
+}
+
+.box__center {
+  @apply flex items-center gap-3;
+}
+
+.box {
+  @apply w-full lg:w-[1080px];
+}
+
+.react__player {
+  @apply w-full lg:w-[1080px] h-[300px] sm:h-[450px] md:h-[400px] lg:h-[600px] !important;
+}
+
+.hover__tooltip {
+  @apply tooltip tooltip-bottom tooltip-error;
+}
+
+.views__likes {
+  @apply flex-row-reverse flex items-center px-3 py-2  border border-black/40 rounded-full hover:bg-black/40 cursor-auto transition duration-150 hover:text-white;
 }
