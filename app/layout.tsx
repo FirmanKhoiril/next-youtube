@@ -1,3 +1,4 @@
+"use client";
 import { Footer, Navbar } from "@/components";
 import "./globals.css";
 import { QueryClientProvider, QueryClient } from "react-query";
