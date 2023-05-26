@@ -14,6 +14,24 @@ export type TContextState = {
   setSidebarToogle: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+export type TRootLayout = {
+  metadata: {
+    title: string;
+    description: string;
+  };
+  children: React.ReactNode;
+};
+
+type Metadata = {
+  title: string;
+  description: string;
+};
+
+export const metadata: Metadata = {
+  title: "pinktube.netlify.app",
+  description: "Youtube Clone but More Better :)",
+};
+
 export type TCardImage = {
   video: {
     author: {
