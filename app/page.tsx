@@ -15,7 +15,7 @@ export default function Home() {
     <div className="min-h-screen">
       {isLoading && isFetching ? <Loading /> : isError && <Error />}
       {isSuccess && (
-        <div className="flex flex-wrap gap-4 justify-center px-0 sm:px-4">
+        <div className="flex flex-wrap gap-4 mt-10 justify-center px-0 sm:px-4">
           {data?.contents?.map((item: TCardImage, idx: number) => (
             <CardImage key={idx} item={item} />
           ))}
