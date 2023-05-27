@@ -21,12 +21,12 @@ const navbar = () => {
         </Link>
       </div>
       <div className="box__center relative">
-        <div data-tip="Search" onClick={() => setSearchToogle(!searchToogle)} className="icon__right block md:hidden">
+        <div data-tip="Search" onClick={() => setSearchToogle((prev: boolean) => !prev)} className="icon__right block md:hidden">
           <AiOutlineSearch className="icon" />
         </div>
         <SearchBar />
       </div>
-      {searchToogle && <SearchMobile />}
+      {!searchToogle && <SearchMobile />}
     </div>
   );
 };

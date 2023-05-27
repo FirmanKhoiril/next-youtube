@@ -5,7 +5,6 @@ import ReactPlayer from "react-player";
 import { Error, Loading } from "@/components";
 import Image from "next/image";
 import millify from "millify";
-import { BsThreeDots } from "react-icons/bs";
 import { useGlobalContext } from "@/context/Context";
 import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
 import moment from "moment";
@@ -33,12 +32,12 @@ export default function Page({ params: { id } }: { params: { id: string } }) {
               <p className="font-poppins">{data?.title}</p>
               <div className="w-full box__center mt-2">
                 <Link href={`/channel/${data?.author?.channelId}`}>
-                  <Image src={data?.author?.avatar[0]?.url} alt={data?.author?.title} width={40} height={40} className="rounded-full" />
+                  <Image src={data?.author?.avatar[0]?.url} loading="lazy" alt={data?.author?.title} width={40} height={40} className="rounded-full" />
                 </Link>
                 <div className="flex items-center w-full justify-between">
                   <div className="flex flex-col">
                     <div className="flex items-center gap-1">
-                      <h4 className=" font-poppins">{data?.author?.title}</h4>
+                      <h4 className=" font-play">{data?.author?.title}</h4>
                       <p className=" text-[12px] text-slate-500">{moment(data?.publishedDate).fromNow()}</p>
                     </div>
                     <div className="text-sm text-gray-600">
@@ -57,8 +56,8 @@ export default function Page({ params: { id } }: { params: { id: string } }) {
               </div>
               <div className={`mt-4 ${toogleDescription ? "min-h-80" : "h-[103px] bg-black/5 "} relative  p-2 rounded-lg space-y-4 overflow-hidden`}>
                 {/* tags */}
-                <div onClick={() => setToogleDescription(!toogleDescription)} className=" absolute right-2 cursor-pointer bg-black/5 hover:bg-black/10 p-2 rounded-full">
-                  <BsThreeDots />
+                <div onClick={() => setToogleDescription((prev: boolean) => !prev)} className=" absolute right-2 cursor-pointer bg-black/20 hover:bg-black/30 px-2 py-1 rounded-full">
+                  ...more
                 </div>
 
                 {/* fix vdeo */}

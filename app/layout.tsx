@@ -16,7 +16,8 @@ export default function RootLayout({ children }: TRootLayout) {
         <meta name="description" content={metadata.description} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Andika:ital@1&family=Inter:wght@500&family=Open+Sans&family=Poppins&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Andika:ital@1&family=Inter:wght@500&family=Open+Sans&family=Play&family=Poppins&display=swap" rel="stylesheet" />
+
         {/* <link rel="icon" href="/public/logo.png" /> */}
       </head>
       <body suppressHydrationWarning={true}>

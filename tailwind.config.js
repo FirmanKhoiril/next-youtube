@@ -12,6 +12,7 @@ module.exports = {
         inter: ["Inter", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
         unique: ["Andika", "sans-serif"],
+        play: ["Play", "sans-serif"],
       },
     },
   },
