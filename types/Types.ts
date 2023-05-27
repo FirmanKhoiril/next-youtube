@@ -19,6 +19,7 @@ export type TComment = {
   };
   publishedTimeText: string;
 };
+
 export interface IComment {
   comment: {
     author: {
@@ -113,7 +114,7 @@ export interface ICardImage {
       stats: {
         views: string | any;
       };
-      thumbnails: [TThumbnailImage];
+      thumbnails?: [TThumbnailImage] | any;
     };
   };
 }

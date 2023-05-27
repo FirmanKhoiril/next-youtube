@@ -1,9 +1,7 @@
 import { videoCommentById } from "@/app/api/fetchYoutube";
 import { Iid, TComment } from "@/types/Types";
 import { useQuery } from "react-query";
-import Loading from "./Loading";
-import Error from "./Error";
-import CardComment from "./CardComment";
+import { CardComment, Error, Loading } from "./";
 
 const Comments = ({ id }: Iid) => {
   const { data, isLoading, isError, isFetching, isSuccess } = useQuery(["commentVideo", id], () => videoCommentById(id), {

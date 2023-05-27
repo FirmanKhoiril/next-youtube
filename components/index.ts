@@ -8,3 +8,4 @@ export { default as Error } from "./Error";
 export { default as Categories } from "./Categories";
 export { default as Comments } from "./Comments";
 export { default as RelatedVideo } from "./RelatedVideo";
+export { default as CardComment } from "./CardComment";

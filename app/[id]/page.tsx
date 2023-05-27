@@ -26,7 +26,7 @@ export default function Page({ params: { id } }: { params: { id: string } }) {
         <Error />
       ) : (
         isSuccess && (
-          <div className="min-h-screen lg:mt-10 px-2 space-y-10 sm:space-y-0 md:px-6 lg:px-14 w-full flex-col lg:flex-row flex relative">
+          <div className="min-h-screen lg:mt-10 px-2 space-y-10 sm:space-y-0 md:px-6 lg:px-14 w-full flex-col xl:flex-row flex relative">
             <div className="flex justify-start gap-2 flex-col box items-start ">
               <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react__player" />
               <p className="font-poppins">{data?.title}</p>
