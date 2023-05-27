@@ -6,3 +6,5 @@ export { default as SearchMobile } from "./SearchMobile";
 export { default as Loading } from "./Loading";
 export { default as Error } from "./Error";
 export { default as Categories } from "./Categories";
+export { default as Comments } from "./Comments";
+export { default as RelatedVideo } from "./RelatedVideo";

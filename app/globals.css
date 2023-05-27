@@ -26,7 +26,7 @@ body {
 }
 
 .react__player {
-  @apply w-full lg:w-[1080px] h-[300px] sm:h-[450px] md:h-[400px] lg:h-[600px] !important;
+  @apply w-full lg:w-[780px] h-[300px] sm:h-[450px] md:h-[400px] lg:h-[500px] xl:h-[600px] xl:w-[1080px] !important;
 }
 
 .hover__tooltip {

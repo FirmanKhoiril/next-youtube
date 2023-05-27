@@ -9,7 +9,7 @@ import { useGlobalContext } from "@/context/Context";
 const navbar = () => {
   const { searchToogle, setSearchToogle } = useGlobalContext();
   return (
-    <div className=" py-2 flex justify-between bg-pink-500 sticky top-0 z-10 items-center flex-wrap">
+    <div className=" py-2 flex justify-between md:justify-around bg-pink-500 sticky top-0 z-10 items-center flex-wrap">
       <div className="box__center">
         <div data-tip="Menu" className=" icon__left ">
           <AiOutlineMenu className=" icon" />

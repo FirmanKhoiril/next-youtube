@@ -25,3 +25,12 @@ export const videoDetailById = async (id: string): Promise<any> => {
   const res = await getDataYoutube(`video/details/?hl=id&id=${id}`);
   return res;
 };
+
+export const videoCommentById = async (id: string): Promise<any> => {
+  const res = await getDataYoutube(`video/comments/?id=${id}&hl=id`);
+  return res;
+};
+export const RelatedVideoById = async (id: string): Promise<any> => {
+  const res = await getDataYoutube(`video/related-contents/?id=${id}&hl=id`);
+  return res;
+};

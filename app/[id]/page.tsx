@@ -2,7 +2,7 @@
 import { useQuery } from "react-query";
 import { videoDetailById } from "../api/fetchYoutube";
 import ReactPlayer from "react-player";
-import { Error, Loading } from "@/components";
+import { Comments, Error, Loading, RelatedVideo } from "@/components";
 import Image from "next/image";
 import millify from "millify";
 import { useGlobalContext } from "@/context/Context";
@@ -26,7 +26,7 @@ export default function Page({ params: { id } }: { params: { id: string } }) {
         <Error />
       ) : (
         isSuccess && (
-          <div className="min-h-screen lg:mt-10 flex-wrap px-2 space-y-2 sm:space-y-0 md:px-6 lg:px-20 w-full flex-col sm:flex-row flex relative">
+          <div className="min-h-screen lg:mt-10 px-2 space-y-10 sm:space-y-0 md:px-6 lg:px-14 w-full flex-col lg:flex-row flex relative">
             <div className="flex justify-start gap-2 flex-col box items-start ">
               <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react__player" />
               <p className="font-poppins">{data?.title}</p>
@@ -55,12 +55,10 @@ export default function Page({ params: { id } }: { params: { id: string } }) {
                 </div>
               </div>
               <div className={`mt-4 ${toogleDescription ? "min-h-80" : "h-[103px] bg-black/5 "} relative  p-2 rounded-lg space-y-4 overflow-hidden`}>
-                {/* tags */}
                 <div onClick={() => setToogleDescription((prev: boolean) => !prev)} className=" absolute right-2 cursor-pointer bg-black/20 hover:bg-black/30 px-2 py-1 rounded-full">
                   ...more
                 </div>
 
-                {/* fix vdeo */}
                 <div className="flex flex-wrap space-x-2">
                   {data?.keywords?.map((keyword: string, idx: number) => (
                     <p className="text-sm text-blue-500 flex flex-wrap" key={idx}>
@@ -71,8 +69,15 @@ export default function Page({ params: { id } }: { params: { id: string } }) {
 
                 <p className=" text-sm font-poppins">{data?.description}</p>
               </div>
+
+              <div>
+                <Comments id={id} />
+              </div>
             </div>
-            <div className="bg-red-500 min-h-screen">{/* Channel Playlist */}</div>
+            <div className="ml-0 md:ml-2 min-h-screen items-center flex w-full flex-col space-y-4">
+              <h1 className="text-4xl font-mons">You might also like</h1>
+              <RelatedVideo id={id} />
+            </div>
           </div>
         )
       )}

@@ -5,6 +5,40 @@ export interface IOptions {
   };
 }
 
+export type TComment = {
+  author: {
+    avatar: [TAvatarAuthor];
+    channelId: string;
+    title: string;
+  };
+  commentId: string;
+  content: string;
+  stats: {
+    replies: number;
+    votes: number;
+  };
+  publishedTimeText: string;
+};
+export interface IComment {
+  comment: {
+    author: {
+      avatar: [TAvatarAuthor];
+      channelId: string;
+      title: string;
+    };
+    commentId: string;
+    content: string;
+    stats: {
+      replies: number;
+      votes: number;
+    };
+    publishedTimeText: string;
+  };
+}
+
+export interface Iid {
+  id: string;
+}
 export type TContextState = {
   searchToogle: boolean;
   sidebarToogle: boolean;
