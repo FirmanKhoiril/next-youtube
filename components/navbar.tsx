@@ -1,11 +1,15 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import SearchBar from "./SearchBar";
+import SearchMobile from "./SearchMobile";
+import { useGlobalContext } from "@/context/Context";
 
 const navbar = () => {
+  const { searchToogle, setSearchToogle } = useGlobalContext();
   return (
-    <div className="px-4 py-2 flex justify-between bg-pink-500 sticky top-0 z-10 items-center flex-wrap">
+    <div className=" py-2 flex justify-between bg-pink-500 sticky top-0 z-10 items-center flex-wrap">
       <div className="box__center">
         <div data-tip="Menu" className=" icon__left ">
           <AiOutlineMenu className=" icon" />
@@ -16,13 +20,13 @@ const navbar = () => {
           </h2>
         </Link>
       </div>
-
-      <div className="box__center">
-        <div data-tip="Search" className="icon__right block sm:hidden">
+      <div className="box__center relative">
+        <div data-tip="Search" onClick={() => setSearchToogle(!searchToogle)} className="icon__right block md:hidden">
           <AiOutlineSearch className="icon" />
         </div>
         <SearchBar />
       </div>
+      {searchToogle && <SearchMobile />}
     </div>
   );
 };

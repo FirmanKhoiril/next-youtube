@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-  @apply font-unique bg-white text-black;
+  @apply font-unique bg-white/90 text-black;
 }
 
 .icon__left {
-  @apply p-3 rounded-md cursor-pointer hover__tooltip hover:bg-black/20;
+  @apply p-3 rounded-md cursor-pointer hover__tooltip hover:text-white hover:bg-white/20;
 }
 .icon__right {
-  @apply p-3 rounded-full cursor-pointer hover__tooltip hover:bg-black/20;
+  @apply p-3 rounded-full cursor-pointer hover__tooltip hover:text-white hover:bg-white/20;
 }
 
 .icon {

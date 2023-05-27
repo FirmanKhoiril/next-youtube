@@ -9,6 +9,10 @@ export type TContextState = {
   searchToogle: boolean;
   sidebarToogle: boolean;
   toogleDescription: boolean;
+  searchTermMobile: string;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  setSearchTermMobile: React.Dispatch<React.SetStateAction<string>>;
   setToogleDescription: React.Dispatch<React.SetStateAction<boolean>>;
   setSearchToogle: React.Dispatch<React.SetStateAction<boolean>>;
   setSidebarToogle: React.Dispatch<React.SetStateAction<boolean>>;

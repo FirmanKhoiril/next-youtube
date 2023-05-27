@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "react-query";
 import { dataYoutube } from "./api/fetchYoutube";
-import { CardImage, Error, Loading } from "@/components";
+import { CardImage, Categories, Error, Loading } from "@/components";
 import { TCardImage } from "@/types/Types";
 
 export default function Home() {
@@ -15,11 +15,14 @@ export default function Home() {
     <div className="min-h-screen">
       {isLoading && isFetching ? <Loading /> : isError && <Error />}
       {isSuccess && (
-        <div className="flex flex-wrap gap-4 mt-10 justify-center px-0 sm:px-4">
-          {data?.contents?.map((item: TCardImage, idx: number) => (
-            <CardImage key={idx} item={item} />
-          ))}
-        </div>
+        <>
+          <Categories />
+          <div className="flex flex-wrap gap-4 mt-10 justify-center px-0 sm:px-4">
+            {data?.contents?.map((item: TCardImage, idx: number) => (
+              <CardImage key={idx} item={item} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
