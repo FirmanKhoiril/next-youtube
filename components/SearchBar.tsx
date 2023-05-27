@@ -35,7 +35,7 @@ const SearchBar = () => {
           <AiOutlineClose className="icon" />
         </span>
       )}
-      <button type="submit" name="buttonSearch" className="p-3 bg-white/40 hover:bg-white/50">
+      <button type="submit" aria-label="buttonSearch" name="buttonSearch" className="p-3 bg-white/40 hover:bg-white/50">
         <AiOutlineSearch className="icon hover:text-white" />
       </button>
     </form>
