@@ -1,11 +1,16 @@
 import { SetStateAction } from "react";
-
 export interface IOptions {
   headers: {
     ["X-RapidAPI-Key"]: string | any;
     ["X-RapidAPI-Host"]: string;
   };
 }
+
+export type TDummyLinks = {
+  name: string;
+  to: string;
+  icon: Element | any;
+};
 
 export type TComment = {
   author: {
@@ -75,14 +80,17 @@ export type TSearch = {
 export interface Iid {
   id: string;
 }
+
 export type TContextState = {
   searchToogle: boolean;
   sidebarToogle: boolean;
   cursorNext: string;
   toogleDescription: boolean;
+  toogleSidebar: boolean;
   searchTermMobile: string;
   searchTerm: string;
   setCursorNext: React.Dispatch<SetStateAction<string>>;
+  setToogleSidebar: React.Dispatch<SetStateAction<boolean>>;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   setSearchTermMobile: React.Dispatch<React.SetStateAction<string>>;
   setToogleDescription: React.Dispatch<React.SetStateAction<boolean>>;
