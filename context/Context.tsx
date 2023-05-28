@@ -7,6 +7,8 @@ export const StateContext = createContext<TContextState>({
   setSearchToogle: () => {},
   sidebarToogle: false,
   searchTerm: "",
+  cursorNext: "",
+  setCursorNext: () => {},
   setSidebarToogle: () => {},
   toogleDescription: false,
   setToogleDescription: () => {},
@@ -18,11 +20,12 @@ export const StateContext = createContext<TContextState>({
 export const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [searchToogle, setSearchToogle] = useState<boolean>(true);
   const [searchTermMobile, setSearchTermMobile] = useState("");
+  const [cursorNext, setCursorNext] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [sidebarToogle, setSidebarToogle] = useState<boolean>(false);
   const [toogleDescription, setToogleDescription] = useState(false);
   return (
-    <StateContext.Provider value={{ searchToogle, sidebarToogle, searchTerm, searchTermMobile, toogleDescription, setSearchTerm, setSearchTermMobile, setToogleDescription, setSearchToogle, setSidebarToogle }}>
+    <StateContext.Provider value={{ searchToogle, cursorNext, sidebarToogle, searchTerm, searchTermMobile, toogleDescription, setSearchTerm, setCursorNext, setSearchTermMobile, setToogleDescription, setSearchToogle, setSidebarToogle }}>
       {" "}
       {children}
     </StateContext.Provider>

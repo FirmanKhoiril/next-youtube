@@ -1,4 +1,4 @@
-import { IOptions } from "@/types/Types";
+import { IOptions, TSearch, TVideoComment, TVideoDetail } from "@/types/Types";
 import axios from "axios";
 
 const BASE_URL: string = "https://youtube138.p.rapidapi.com";
@@ -16,21 +16,31 @@ const getDataYoutube = async (url: string): Promise<any> => {
   return data;
 };
 
-export const dataYoutube = async (): Promise<any> => {
+export const dataYoutube = async (): Promise<TSearch> => {
   const res = await getDataYoutube("search/?q=beritaterbaru2023&hl=id");
   return res;
 };
+export const getSearchParams = async (id: string): Promise<TSearch> => {
+  const res = await getDataYoutube(`search/?q=${id}&hl=id`);
 
-export const videoDetailById = async (id: string): Promise<any> => {
+  return res;
+};
+export const getNextPageSearchParams = async (id: string, cursorNext: string): Promise<TSearch> => {
+  const res = await getDataYoutube(`search/?q=${id}&hl=id&cursor=${cursorNext}`);
+
+  return res;
+};
+
+export const videoDetailById = async (id: string): Promise<TVideoDetail> => {
   const res = await getDataYoutube(`video/details/?hl=id&id=${id}`);
   return res;
 };
 
-export const videoCommentById = async (id: string): Promise<any> => {
+export const videoCommentById = async (id: string): Promise<TVideoComment> => {
   const res = await getDataYoutube(`video/comments/?id=${id}&hl=id`);
   return res;
 };
-export const RelatedVideoById = async (id: string): Promise<any> => {
+export const RelatedVideoById = async (id: string): Promise<TSearch> => {
   const res = await getDataYoutube(`video/related-contents/?id=${id}&hl=id`);
   return res;
 };

@@ -1,16 +1,17 @@
 "use client";
-import { getSearchParams } from "@/app/api/fetchYoutube";
+import { getNextPageSearchParams } from "@/app/api/fetchYoutube";
 import { CardImage, Error, Loading } from "@/components";
 import { useGlobalContext } from "@/context/Context";
 import { TCardImage } from "@/types/Types";
 import { useRouter } from "next/navigation";
 import { useQuery } from "react-query";
 
-const page = ({ params: { search } }: { params: { search: string } }) => {
+const page = ({ params: { search, nextPage } }: { params: { search: string; nextPage: string } }) => {
   const router = useRouter();
-  const { cursorNext, setCursorNext } = useGlobalContext();
 
-  const { data, isSuccess, isLoading, isFetching, isError } = useQuery(["search", search, cursorNext], () => getSearchParams(search), {
+  const { setCursorNext } = useGlobalContext();
+
+  const { data, isSuccess, isLoading, isFetching, isError } = useQuery(["search", search, nextPage], () => getNextPageSearchParams(search, nextPage), {
     refetchOnWindowFocus: false,
     staleTime: 60 * (60 * 1000),
     refetchInterval: 60 * (60 * 1000),
@@ -31,7 +32,7 @@ const page = ({ params: { search } }: { params: { search: string } }) => {
       ) : (
         isSuccess && (
           <>
-            <h1 className=" text-center my-10 text-pink-500 text-4xl font-inter">Searching For : {decodedSearch}</h1>
+            <h1 className=" text-center my-10 text-pink-500 text-4xl">Searching For {decodedSearch}</h1>
             <div className="flex flex-row gap-3 justify-center items-center flex-wrap">
               {data?.contents?.map((item: TCardImage, idx: number) => (
                 <CardImage item={item} key={idx} />

@@ -9,3 +9,5 @@ export { default as Categories } from "./Categories";
 export { default as Comments } from "./Comments";
 export { default as RelatedVideo } from "./RelatedVideo";
 export { default as CardComment } from "./CardComment";
+export { default as CardRelatedVideo } from "./CardRelatedVideo";
+export { default as NotFound } from "./NotFound";

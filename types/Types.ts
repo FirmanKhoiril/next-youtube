@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export interface IOptions {
   headers: {
     ["X-RapidAPI-Key"]: string | any;
@@ -7,7 +9,7 @@ export interface IOptions {
 
 export type TComment = {
   author: {
-    avatar: [TAvatarAuthor];
+    avatar: [TThumbnailImage];
     channelId: string;
     title: string;
   };
@@ -20,10 +22,32 @@ export type TComment = {
   publishedTimeText: string;
 };
 
+export type TVideoDetail = {
+  author: {
+    avatar: [TThumbnailImage];
+    channelId: string;
+    title: string;
+    stats: {
+      subscribers: string;
+      subscribersText: string;
+    };
+  };
+  description: string;
+  publishedDate: string;
+  thumbnails: [TThumbnailImage];
+  title: string;
+  videoId: string;
+  stats: {
+    comments: number;
+    likes: number;
+    views: number;
+  };
+};
+
 export interface IComment {
   comment: {
     author: {
-      avatar: [TAvatarAuthor];
+      avatar: [TThumbnailImage];
       channelId: string;
       title: string;
     };
@@ -37,15 +61,27 @@ export interface IComment {
   };
 }
 
+export type TVideoComment = {
+  comments: [];
+  cursorNext: string;
+};
+
+export type TSearch = {
+  cursorNext: string;
+  contents: [];
+};
+
 export interface Iid {
   id: string;
 }
 export type TContextState = {
   searchToogle: boolean;
   sidebarToogle: boolean;
+  cursorNext: string;
   toogleDescription: boolean;
   searchTermMobile: string;
   searchTerm: string;
+  setCursorNext: React.Dispatch<SetStateAction<string>>;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   setSearchTermMobile: React.Dispatch<React.SetStateAction<string>>;
   setToogleDescription: React.Dispatch<React.SetStateAction<boolean>>;
@@ -76,7 +112,7 @@ export type TCardImage = {
     author: {
       title: string;
       channelId: string;
-      avatar: [TAvatarAuthor];
+      avatar: [TThumbnailImage];
     };
     descriptionSnippet: string;
     title: string;
@@ -90,10 +126,6 @@ export type TCardImage = {
   };
 };
 
-export type TAvatarAuthor = {
-  url: string;
-};
-
 export type TThumbnailImage = {
   url: string;
 };
@@ -104,7 +136,7 @@ export interface ICardImage {
       author: {
         title: string;
         channelId: string;
-        avatar: [TAvatarAuthor];
+        avatar: [TThumbnailImage];
       };
       descriptionSnippet: string;
       title: string;

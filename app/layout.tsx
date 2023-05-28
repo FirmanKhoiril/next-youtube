@@ -6,9 +6,8 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { ContextProvider } from "@/context/Context";
 import { TRootLayout, metadata } from "@/types/Types";
 
-const client = new QueryClient();
-
 export default function RootLayout({ children }: TRootLayout) {
+  const client = new QueryClient();
   return (
     <html lang="en">
       <head>
@@ -18,17 +17,17 @@ export default function RootLayout({ children }: TRootLayout) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Andika:ital@1&family=Inter:wght@500&family=Open+Sans&family=Play&family=Poppins&display=swap" rel="stylesheet" />
 
-        {/* <link rel="icon" href="/public/logo.png" /> */}
+        <link rel="icon" href="/public/logo.png" />
       </head>
       <body suppressHydrationWarning={true}>
-        <ContextProvider>
-          <Navbar />
-          <QueryClientProvider client={client}>
+        <QueryClientProvider client={client} contextSharing={true}>
+          <ContextProvider>
+            <Navbar />
             {children}
             <ReactQueryDevtools />
-          </QueryClientProvider>
-          <Footer />
-        </ContextProvider>
+            <Footer />
+          </ContextProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );

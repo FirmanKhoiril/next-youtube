@@ -1,7 +1,7 @@
 import { RelatedVideoById } from "@/app/api/fetchYoutube";
 import { Iid, TCardImage } from "@/types/Types";
 import { useQuery } from "react-query";
-import { CardImage, Error, Loading } from "./";
+import { CardRelatedVideo, Error, Loading } from "./";
 
 const RelatedVideo = ({ id }: Iid) => {
   const { data, isLoading, isError, isFetching, isSuccess } = useQuery(["relatedVideo", id], () => RelatedVideoById(id), {
@@ -19,7 +19,7 @@ const RelatedVideo = ({ id }: Iid) => {
         isSuccess && (
           <div className="flex gap-4 flex-col mt-4">
             {data?.contents?.map((content: TCardImage, idx: number) => (
-              <CardImage key={idx} item={content} />
+              <CardRelatedVideo key={idx} item={content} />
             ))}
           </div>
         )

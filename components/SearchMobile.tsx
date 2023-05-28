@@ -11,9 +11,7 @@ const SearchMobile = () => {
     e.preventDefault();
     setSearchToogle((prev: boolean) => !prev);
     setSearchTermMobile("");
-    if (searchTermMobile.length === 0) {
-      alert("Harus Diisi ");
-    } else {
+    if (searchTermMobile.length > 0) {
       router.push(`/search/${searchTermMobile}`);
     }
   };
@@ -33,7 +31,7 @@ const SearchMobile = () => {
         </span>
       )}
 
-      <button type="submit" name="buttonSearch" aria-label="buttonSearch" className="p-3 rounded-full hover:bg-white/30">
+      <button type="submit" name="buttonSearch" aria-label="buttonSearch" className="p-3 rounded-full hover:bg-white/30" onSubmit={() => setSearchTermMobile((prev: boolean) => setSearchToogle(!prev))}>
         <AiOutlineSearch className="text-2xl" />
       </button>
     </form>
