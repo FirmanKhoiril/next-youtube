@@ -17,7 +17,7 @@ const RelatedVideo = ({ id }: Iid) => {
         <Error />
       ) : (
         isSuccess && (
-          <div className="flex gap-4 flex-col mt-4">
+          <div className="flex gap-3 flex-col mt-4">
             {data?.contents?.map((content: TCardImage, idx: number) => (
               <CardRelatedVideo key={idx} item={content} />
             ))}
