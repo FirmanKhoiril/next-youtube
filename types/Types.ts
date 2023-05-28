@@ -31,6 +31,7 @@ export type TVideoDetail = {
       subscribers: string;
       subscribersText: string;
     };
+    keywords: [string];
   };
   description: string;
   publishedDate: string;
