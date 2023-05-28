@@ -31,10 +31,10 @@ export type TVideoDetail = {
       subscribers: string;
       subscribersText: string;
     };
-    keywords: [string];
   };
   description: string;
   publishedDate: string;
+  keywords: [string];
   thumbnails: [TThumbnailImage];
   title: string;
   videoId: string;
