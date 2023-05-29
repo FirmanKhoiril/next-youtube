@@ -20,7 +20,7 @@ export default function RootLayout({ children }: TRootLayout) {
         <link rel="icon" href="logo.png" />
       </head>
       <body suppressHydrationWarning={true}>
-        <QueryClientProvider client={client} contextSharing={true}>
+        <QueryClientProvider client={client}>
           <ContextProvider>
             <Navbar />
             {children}

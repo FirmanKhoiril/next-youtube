@@ -36,7 +36,7 @@ const Sidebar = () => {
           @All rights reserved <br />
           <a
             target="_blank"
-            href="https://api.whatsapp.com/send?phone=62085290502392&text=Send20%a20%quote"
+            href="https://api.whatsapp.com/send?phone=62085290502392&text=Hi Firman :)"
             className=" text-transparent bg-clip-text bg-gradient-to-tr from-pink-500 via-red-300 font-extrabold hover:text-pink-500 transition duration-200 to-pink-400 text-lg"
           >
             Firman Khoiril Rohmatullah

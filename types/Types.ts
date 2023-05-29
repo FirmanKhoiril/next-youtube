@@ -81,6 +81,10 @@ export interface Iid {
   id: string;
 }
 
+export type TCategory = {
+  name: string;
+};
+
 export type TContextState = {
   searchToogle: boolean;
   sidebarToogle: boolean;

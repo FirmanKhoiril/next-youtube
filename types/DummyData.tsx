@@ -6,11 +6,12 @@ export const dummyLinks = [
   { name: "Shorts", to: "/short", icon: <TfiShortcode /> },
 ];
 
-export const categories = [
+export const categoriesData = [
   { name: "All" },
   { name: "Mixes" },
   { name: "Music" },
   { name: "Gaming" },
+  { name: "News" },
   { name: "Programmer" },
   { name: "3D Blender" },
   { name: "New to you" },
