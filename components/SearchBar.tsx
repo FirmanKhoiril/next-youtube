@@ -1,4 +1,6 @@
+"use client";
 import { useGlobalContext } from "@/context/Context";
+// import { useRouter } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
