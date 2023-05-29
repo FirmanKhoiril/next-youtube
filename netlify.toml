@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+[build.environment]
+  NODE_ENV = "production"
+
+[build.settings]
+  # Enable Next.js 13.4's Server Components feature
+  serverComponents = true
+
+  # Enable Next.js 13.4's Conformance feature for stricter production builds
+  conformance = true
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

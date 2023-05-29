@@ -24,14 +24,13 @@ export default function Home({ params: { search } }: { params: { search: string 
   });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex items-center justify-center flex-col">
       {isLoading && isFetching ? <Loading /> : isError && <Error />}
       {isFetchingNextPage && <Loading />}
-      <h1>{search}</h1>
       {isSuccess && (
         <>
           {data?.pages.map((page: any, idx: number) => (
-            <div key={idx} className="flex flex-wrap gap-4 mt-10 px-0 sm:px-4">
+            <div key={idx} className="flex flex-wrap items-center justify-center gap-4 mt-10 px-0 sm:px-4">
               {page?.contents?.map((item: TCardImage, idx: number) => (
                 <CardImage key={idx} item={item} />
               ))}
