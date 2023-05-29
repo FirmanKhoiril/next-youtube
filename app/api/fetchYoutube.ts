@@ -11,8 +11,9 @@ const options: IOptions = {
 };
 
 const getDataYoutube = async (url: string): Promise<any> => {
-  const { data } = await axios.get(`${BASE_URL}/${url}`, options);
+  const res = await fetch(`${BASE_URL}/${url}`, options);
 
+  const data = res.json();
   return data;
 };
 
