@@ -1,5 +1,4 @@
 import { IOptions, TSearch, TVideoComment, TVideoDetail } from "@/types/Types";
-import axios from "axios";
 
 const BASE_URL: string = "https://youtube138.p.rapidapi.com";
 
