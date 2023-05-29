@@ -9,12 +9,11 @@ export default function Home() {
   const { categories, cursorNext, setCursorNext } = useGlobalContext();
   const { data, fetchNextPage, isLoading, isSuccess, isError, isFetching, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryFn: ({ nextPage }: any) => YoutubeInfinite(nextPage, categories),
-    queryKey: ["youtubeInfinite", categories, cursorNext],
+    queryKey: ["youtubeInfinite", categories],
     getNextPageParam: (lastPage, pages) => {
-      console.log(pages[0].cursorNext);
-
-      if (pages.length > 0) {
+      if (pages.length < 1) {
         setCursorNext(pages[0].cursorNext);
+        console.log(pages[0].cursorNext);
         return pages[0].cursorNext;
       }
     },
