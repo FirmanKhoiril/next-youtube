@@ -4,6 +4,7 @@ import { TDummyLinks } from "@/types/Types";
 import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
+
 const Sidebar = () => {
   const { setToogleSidebar } = useGlobalContext();
   return (
