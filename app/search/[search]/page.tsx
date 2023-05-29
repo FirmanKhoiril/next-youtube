@@ -1,58 +1,55 @@
 "use client";
-import { getSearchParams } from "@/app/api/fetchYoutube";
+import { useInfiniteQuery } from "react-query";
+import { YoutubeInfinite } from "../../api/fetchYoutube";
 import { CardImage, Error, Loading } from "@/components";
-import { useGlobalContext } from "@/context/Context";
 import { TCardImage } from "@/types/Types";
-import { useRouter } from "next/navigation";
-import { useQuery } from "react-query";
+import { useGlobalContext } from "@/context/Context";
 
-const page = ({ params: { search } }: { params: { search: string } }) => {
-  const router = useRouter();
+export default function Home({ params: { search } }: { params: { search: string } }) {
   const { cursorNext, setCursorNext } = useGlobalContext();
-
-  const { data, isSuccess, isLoading, isFetching, isError } = useQuery(["search", search, cursorNext], () => getSearchParams(search), {
+  const { data, fetchNextPage, isLoading, isSuccess, isError, isFetching, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    queryFn: () => YoutubeInfinite({ cursorNext, search }),
+    queryKey: ["youtubeInfinite", search],
+    getNextPageParam: (lastPage, pages) => {
+      const nextPage = pages?.map((page) => page?.cursorNext);
+      if (pages?.length > 0) {
+        setCursorNext(pages[0]?.cursorNext);
+        return nextPage;
+      }
+      return null;
+    },
     refetchOnWindowFocus: false,
     staleTime: 60 * (60 * 1000),
     refetchInterval: 60 * (60 * 1000),
   });
-  const decodedSearch = decodeURIComponent(search);
-  const handleNextPage = () => {
-    if (data && data.cursorNext) {
-      setCursorNext(data?.cursorNext);
-    }
-    router.push(`/search/${search}/${data?.cursorNext}`);
-  };
+
   return (
-    <>
-      {isLoading && isFetching ? (
-        <Loading />
-      ) : isError ? (
-        <Error />
-      ) : (
-        isSuccess && (
-          <>
-            <h1 className=" text-center my-10 text-pink-500 text-4xl font-inter">Searching For : {decodedSearch}</h1>
-            <div className="flex flex-row gap-3 justify-center items-center flex-wrap">
-              {data?.contents?.map((item: TCardImage, idx: number) => (
-                <CardImage item={item} key={idx} />
+    <div className="min-h-screen">
+      {isLoading && isFetching ? <Loading /> : isError && <Error />}
+      {isFetchingNextPage && <Loading />}
+
+      {isSuccess && (
+        <>
+          {data?.pages.map((page: any, idx: number) => (
+            <div key={idx} className="flex flex-wrap gap-4 mt-10 px-0 sm:px-4">
+              {page?.contents?.map((item: TCardImage, idx: number) => (
+                <CardImage key={idx} item={item} />
               ))}
             </div>
-            <div className="flex items-center justify-center my-10 ">
-              <button
-                onClick={handleNextPage}
-                className="rounded-md hover:bg-white border-transparent border hover:border-pink-500 transition duration-300 w-28 px-3 py-2 bg-pink-500"
-                type="button"
-                name="ButtonNextPage"
-                aria-label="nextPage"
-              >
-                Next Page
-              </button>
-            </div>
-          </>
-        )
+          ))}
+        </>
       )}
-    </>
+      {hasNextPage && (
+        <button
+          className="px-4 mt-10 flex items-center justify-center bg-white border border-pink-500 hover:bg-pink-500 hover:border-transparent transition duration-200 py-2"
+          onClick={() => {
+            fetchNextPage();
+          }}
+          type="button"
+        >
+          Next Page
+        </button>
+      )}
+    </div>
   );
-};
-
-export default page;
+}

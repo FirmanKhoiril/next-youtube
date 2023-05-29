@@ -17,15 +17,15 @@ const getDataYoutube = async (url: string): Promise<any> => {
 };
 
 export const dataYoutube = async (category: string): Promise<TSearch> => {
-  const res = await getDataYoutube(`search/?q=${category === null ? "Berita Populer 2023" : category}&hl=id`);
+  const res = await getDataYoutube(`search/?q=${category}&hl=id`);
   return res;
 };
 
-export const YoutubeInfinite = async (cursorNext: string, category: string): Promise<TSearch> => {
-  console.log(cursorNext);
-  const res = await getDataYoutube(`search/?q=${category}&cursor${cursorNext}&hl=id`);
+export const YoutubeInfinite = async ({ cursorNext, search }: { cursorNext: string; search: string }): Promise<any> => {
+  const res = await getDataYoutube(`search/?q=${search}&cursor=${cursorNext}&hl=id`);
   return res;
 };
+
 export const getSearchParams = async (id: string): Promise<TSearch> => {
   const res = await getDataYoutube(`search/?q=${id}&hl=id`);
 
