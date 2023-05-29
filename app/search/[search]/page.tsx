@@ -27,7 +27,7 @@ export default function Home({ params: { search } }: { params: { search: string 
     <div className="min-h-screen">
       {isLoading && isFetching ? <Loading /> : isError && <Error />}
       {isFetchingNextPage && <Loading />}
-
+      <h1>{search}</h1>
       {isSuccess && (
         <>
           {data?.pages.map((page: any, idx: number) => (
