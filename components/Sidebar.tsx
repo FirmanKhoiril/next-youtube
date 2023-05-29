@@ -34,7 +34,11 @@ const Sidebar = () => {
       <div className="absolute bottom-5">
         <h2 className="text-sm">
           @All rights reserved <br />
-          <a target="_blank" href="" className=" text-transparent bg-clip-text bg-gradient-to-tr from-pink-500 via-red-300 font-extrabold hover:text-pink-500 transition duration-200 to-pink-400 text-lg">
+          <a
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=62085290502392&text=Send20%a20%quote"
+            className=" text-transparent bg-clip-text bg-gradient-to-tr from-pink-500 via-red-300 font-extrabold hover:text-pink-500 transition duration-200 to-pink-400 text-lg"
+          >
             Firman Khoiril Rohmatullah
           </a>
         </h2>
