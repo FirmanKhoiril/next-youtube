@@ -1,4 +1,5 @@
 import { IOptions, TSearch, TVideoComment, TVideoDetail } from "@/types/Types";
+import axios from "axios";
 
 const BASE_URL: string = "https://youtube138.p.rapidapi.com";
 
@@ -9,31 +10,14 @@ const options: IOptions = {
   },
 };
 
-const getDataYoutube = async (url: string): Promise<any> => {
-  const res = await fetch(`${BASE_URL}/${url}`, options);
+export const getDataYoutube = async (url: string): Promise<any> => {
+  const { data } = await axios.get(`${BASE_URL}/${url}`, options);
 
-  const data = res.json();
   return data;
-};
-
-export const dataYoutube = async (category: string): Promise<TSearch> => {
-  const res = await getDataYoutube(`search/?q=${category}&hl=id`);
-  return res;
-};
-
-export const YoutubeInfinite = async ({ cursorNext, search }: { cursorNext: string; search: string }): Promise<any> => {
-  const decoded = decodeURIComponent(search);
-  const res = await getDataYoutube(`search/?q=${decoded}&cursor=${cursorNext}&hl=id`);
-  return res;
 };
 
 export const getSearchParams = async (id: string): Promise<TSearch> => {
   const res = await getDataYoutube(`search/?q=${id}&hl=id`);
-
-  return res;
-};
-export const getNextPageSearchParams = async (id: string, cursorNext: string): Promise<TSearch> => {
-  const res = await getDataYoutube(`search/?q=${id}&hl=id&cursor=${cursorNext}`);
 
   return res;
 };

@@ -1,12 +1,18 @@
 "use client";
 import { useInfiniteQuery } from "react-query";
-import { YoutubeInfinite } from "../../api/fetchYoutube";
 import { CardImage, Error, Loading } from "@/components";
 import { TCardImage } from "@/types/Types";
 import { useGlobalContext } from "@/context/Context";
+import { getDataYoutube } from "@/app/api/fetchYoutube";
 
-export default function Home({ params: { search } }: { params: { search: string } }) {
+export default function page({ params: { search } }: { params: { search: string } }) {
   const { cursorNext, setCursorNext } = useGlobalContext();
+
+  const YoutubeInfinite = async ({ cursorNext, search }: { cursorNext?: string; search: string }): Promise<any> => {
+    const decoded = decodeURIComponent(search);
+    const res = await getDataYoutube(`search/?q=${decoded}&cursor=${cursorNext}&hl=id`);
+    return res;
+  };
 
   const { data, fetchNextPage, isLoading, isSuccess, isError, isFetching, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryFn: () => YoutubeInfinite({ cursorNext, search }),
