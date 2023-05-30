@@ -22,7 +22,8 @@ export const dataYoutube = async (category: string): Promise<TSearch> => {
 };
 
 export const YoutubeInfinite = async ({ cursorNext, search }: { cursorNext: string; search: string }): Promise<any> => {
-  const res = await getDataYoutube(`search/?q=${search}&cursor=${cursorNext}&hl=id`);
+  const decoded = decodeURIComponent(search);
+  const res = await getDataYoutube(`search/?q=${decoded}&cursor=${cursorNext}&hl=id`);
   return res;
 };
 

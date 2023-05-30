@@ -7,6 +7,7 @@ import { useGlobalContext } from "@/context/Context";
 
 export default function Home({ params: { search } }: { params: { search: string } }) {
   const { cursorNext, setCursorNext } = useGlobalContext();
+
   const { data, fetchNextPage, isLoading, isSuccess, isError, isFetching, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryFn: () => YoutubeInfinite({ cursorNext, search }),
     queryKey: ["youtubeInfinite", search],
