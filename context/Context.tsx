@@ -51,7 +51,6 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
         setSidebarToogle,
       }}
     >
-      {" "}
       {children}
     </StateContext.Provider>
   );
